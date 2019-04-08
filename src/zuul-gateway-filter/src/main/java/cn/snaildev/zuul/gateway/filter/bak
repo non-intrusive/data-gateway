@@ -1,0 +1,64 @@
+ //    @Autowired
+ //    @Qualifier("proxyRequestHelper")
+ //    private ProxyRequestHelper helper;
+ //
+ //    @Autowired
+ //    private SpringClientFactory clientFactory;
+ //
+ //    private AntPathMatcher antPathMatcher = new AntPathMatcher();
+
+       RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        String serviceName = (String) ctx.get("serviceId");
+        String requestUrl = request.getRequestURL().toString();
+        String zuulUri = request.getRequestURI().replace("//", "/");
+        String apiUri = helper.buildZuulRequestURI(request).replace("//", "/");
+
+//        List<String> startWiths = collectProperties.getStartWiths();
+//        if (startWiths != null) {
+//            for (String startWith : startWiths) {
+//                if (apiUri.startsWith(startWith)) {
+//                    return null;
+//                }
+//            }
+//        }
+//
+//        List<String> endWiths = collectProperties.getEndWiths();
+//        if (endWiths != null) {
+//            for (String endWith : endWiths) {
+//                if (apiUri.endsWith(endWith)) {
+//                    return null;
+//                }
+//            }
+//        }
+//
+//        List<String> equals = collectProperties.getEquals();
+//        if (equals != null) {
+//            for (String equal : equals) {
+//                if (apiUri.equals(equal)) {
+//                    return null;
+//                }
+//            }
+//        }
+//
+//        List<PatternProperties> patterns = collectProperties.getPatterns();
+//        if (patterns != null) {
+//            for (PatternProperties pattern : patterns) {
+//                if (pattern.getService().equals(serviceName)) {
+//                    List<String> uris = pattern.getUris();
+//                    for (String uri : uris) {
+//                        if (antPathMatcher.match(uri, apiUri)) {
+//                            zuulUri = zuulUri.replace(apiUri, uri);
+//                            apiUri = uri;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+        String clientIp = NetUtils.getIpAddress(request); //ctx.getZuulRequestHeaders().get(NetUtils.HTTP_X_FORWARDED_FOR);
+        String requestMethod = request.getMethod();
+        String authName = request.getParameter("authName");
+        authName = Strings.isNullOrEmpty(authName) ? "unknown" : authName;
+
+       // asyncProcesser(zuulUri, serviceName, apiUri, requestMethod, clientIp, authName);
