@@ -50,7 +50,6 @@ public class NetUtils {
         }
         if (ip == null || ip.length() == 0 || UNKOWN.equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
-            log.info(String.format("get ip from method getRemoteAddress() %s", ip));
         }
         return ip;
     }

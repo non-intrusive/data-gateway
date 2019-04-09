@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="zuul-gateway" />
         <module name="zuul-gateway-filter" />
+        <module name="zuul-gateway-rocketmq" />
       </profile>
     </annotationProcessing>
   </component>

@@ -10,6 +10,7 @@
     <modules>
         <module>zuul-gateway</module>
         <module>zuul-gateway-filter</module>
+        <module>zuul-gateway-rocketmq</module>
     </modules>
 
     <properties>
@@ -23,6 +24,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>${spring.boot.vesion}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
